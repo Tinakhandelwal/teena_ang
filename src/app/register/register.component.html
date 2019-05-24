@@ -1,0 +1,33 @@
+<div class="col-md-12">
+  <h4 class="mb-3">Register Yourself</h4>
+  <form class="needs-validation" (ngSubmit)="onFormSubmit(regForm)" #regForm = "ngForm">
+      <p class = "alert alert-danger" *ngIf = "password.value !== c_password.value">Password Does Not Match</p>
+      <p class = "alert alert-success" *ngIf = "registered">User Registered Successfully! 
+      Goto <a routerLink = "/login">Login</a> {{regForm.reset()}}
+      </p>
+    <div class="row">
+      <div class="col-md-12">
+        <label for="firstName">Name</label>
+        <input type="text" class="form-control"  name="name" #name ngModel placeholder="Name" required>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="username">Username</label>
+      <input type="text" class="form-control" name="username" #username ngModel placeholder="Username" required>
+    </div>
+    <div class="mb-3">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" name="email" #email ngModel placeholder="Email" required>
+    </div>
+    <div class="mb-3">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" name="password" #password ngModel placeholder="Password" autocomplete = false required>
+    </div>
+    <div class="mb-3">
+      <label for="password">Confirm Password</label>
+      <input type="password" class="form-control" name="c_password" #c_password ngModel placeholder="Confirm Password" autocomplete = false required>
+    </div>
+    <hr class="mb-4">
+    <button class="btn btn-primary btn-lg btn-block" type="submit" [disabled]="regForm.invalid || password.value!==c_password.value">Register</button>
+  </form>
+</div>
